@@ -1,25 +1,5 @@
-/* ==========================================================
-   data.js — "база даних" магазину SIX SEVEN
-   Усі товари, категорії, розмірні сітки, міста й доставка.
-   Щоб додати новий товар — просто допиши ще один об'єкт у PRODUCTS.
-   ========================================================== */
 
-/* ----------------------------------------------------------
-   ЯК ДОДАТИ ВЛАСНІ ФОТО ТОВАРУ
-   1. Створи папку img/products/<id товару>/, наприклад img/products/hoodie-cross/
-   2. Поклади туди фото (назви латиницею, без пробілів):
-        card.png  — фото для картки в каталозі (вертикальне, приблизно 4:5)
-        1.png, 2.png, 3.png — фото для галереї на сторінці товару
-   3. У товару в PRODUCTS заміни image і допиши gallery:
-        image: 'img/products/hoodie-cross/card.png',
-        gallery: ['img/products/hoodie-cross/1.png',
-                  'img/products/hoodie-cross/2.png',
-                  'img/products/hoodie-cross/3.png'],
-   Якщо gallery не вказано — показуються спільні фото нижче.
-   Якщо шлях з помилкою — замість "битої" картинки буде стандартне фото.
-   ---------------------------------------------------------- */
 
-/* Спільні фото, які зараз використовують усі товари */
 const IMG_CARD = ['img/Group 32.png', 'img/pp-Photoroom 3.png'];
 const IMG_GALLERY = [
     'img/Property 1=Frame 171.png',
@@ -32,7 +12,6 @@ const IMG_GALLERY = [
     'img/Property 1=Component 86.png'
 ];
 
-/* Категорії: ключ (для адреси сторінки) → назва */
 const CATEGORIES = {
     all:         'Усі товари',
     clothes:     'Одяг',
@@ -51,7 +30,6 @@ const CATEGORIES = {
     shoes:       'Взуття'
 };
 
-/* Групові категорії: які звичайні категорії в них входять */
 const CATEGORY_GROUPS = {
     clothes: ['outerwear', 'sweatshirts', 'hoodies', 'tshirts', 'tops', 'dresses', 'jeans', 'skirts', 'shorts'],
     bottoms: ['jeans', 'skirts', 'shorts']
@@ -62,7 +40,6 @@ const SIZES_CLOTHES = ['XS', 'S', 'M', 'L', 'XL'];
 const SIZES_SHOES = ['36', '37', '38', '39', '40', '41'];
 const SIZES_ONE = ['ONE SIZE'];
 
-/* Розмірні сітки (у сантиметрах) — для таблиці та підбору розміру */
 const SIZE_CHARTS = {
     jeans: {
         title: 'Джинси та штани',
@@ -102,9 +79,7 @@ const SIZE_CHARTS = {
     }
 };
 
-/* Товари */
 const PRODUCTS = [
-    /* ---------- Джинси ---------- */
     {
         id: 'flared-cross', name: 'Flared Jeans Cross', category: 'jeans',
         price: 2199, color: 'чорний', sizes: SIZES_JEANS, soldOut: ['44'],
@@ -149,7 +124,6 @@ const PRODUCTS = [
         isNew: false, popularity: 60, image: IMG_CARD[0]
     },
 
-    /* ---------- Худі ---------- */
     {
         id: 'hoodie-cross', name: 'Hoodie Cross', category: 'tops',
         price: 1899, color: 'чорний', sizes: SIZES_CLOTHES,
@@ -172,7 +146,6 @@ const PRODUCTS = [
         isNew: false, popularity: 75, image: IMG_CARD[0]
     },
 
-    /* ---------- Світшоти ---------- */
     {
         id: 'sweatshirt-gothic', name: 'Sweatshirt Gothic', category: 'sweatshirts',
         price: 1499, color: 'чорний', sizes: SIZES_CLOTHES,
@@ -188,7 +161,6 @@ const PRODUCTS = [
         isNew: true, popularity: 55, image: IMG_CARD[0]
     },
 
-    /* ---------- Футболки ---------- */
     {
         id: 'tee-six-seven', name: 'Tee Six Seven', category: 'tshirts',
         price: 699, color: 'білий', sizes: SIZES_CLOTHES,
@@ -211,7 +183,6 @@ const PRODUCTS = [
         isNew: false, popularity: 50, image: IMG_CARD[1]
     },
 
-    /* ---------- Топи ---------- */
     {
         id: 'top-eyelet', name: 'Top Eyelet', category: 'tops',
         price: 899, color: 'білий', sizes: SIZES_CLOTHES,
@@ -227,7 +198,6 @@ const PRODUCTS = [
         isNew: true, popularity: 80, image: IMG_CARD[1]
     },
 
-    /* ---------- Сукні ---------- */
     {
         id: 'slip-dress', name: 'Slip Dress Night', category: 'dresses',
         price: 1699, color: 'чорний', sizes: SIZES_CLOTHES,
@@ -243,7 +213,6 @@ const PRODUCTS = [
         isNew: true, popularity: 62, image: IMG_CARD[1]
     },
 
-    /* ---------- Спідниці ---------- */
     {
         id: 'denim-maxi-skirt', name: 'Denim Maxi Skirt', category: 'skirts',
         price: 1599, color: 'синій', sizes: SIZES_CLOTHES,
@@ -259,7 +228,6 @@ const PRODUCTS = [
         isNew: false, popularity: 58, image: IMG_CARD[1]
     },
 
-    /* ---------- Шорти ---------- */
     {
         id: 'denim-shorts', name: 'Denim Shorts Raw', category: 'shorts',
         price: 999, color: 'синій', sizes: SIZES_JEANS,
@@ -275,7 +243,6 @@ const PRODUCTS = [
         isNew: true, popularity: 64, image: IMG_CARD[1]
     },
 
-    /* ---------- Верхній одяг ---------- */
     {
         id: 'denim-jacket-cross', name: 'Denim Jacket Cross', category: 'outerwear',
         price: 2999, color: 'чорний', sizes: SIZES_CLOTHES,
@@ -291,7 +258,6 @@ const PRODUCTS = [
         isNew: false, popularity: 76, image: IMG_CARD[1]
     },
 
-    /* ---------- Аксесуари ---------- */
     {
         id: 'bag-mini-denim', name: 'Bag Cross Charm', category: 'accessories',
         price: 1299, color: 'чорний', sizes: SIZES_ONE,
@@ -308,7 +274,6 @@ const PRODUCTS = [
         gallery: ['img/bag.jpg']
     },
 
-    /* ---------- Взуття ---------- */
     {
         id: 'sneakers-canvas', name: 'Zip High-Tops', category: 'shoes',
         price: 2799, color: 'чорний', sizes: SIZES_SHOES, soldOut: ['41'],
@@ -326,7 +291,6 @@ const PRODUCTS = [
     }
 ];
 
-/* Відгуки, які вже є на сайті (стартові) */
 const DEFAULT_REVIEWS = {
     'flared-cross': [
         { id: 'r1', author: 'Антоніна', rating: 5, text: 'Давно шукала ідеальні клеш джинси, і ці — просто знахідка! На мої параметри (ОТ 65, ОБ 94) розмір 36 ідеально підійшов.', date: '2026-10-02', likes: 12, dislikes: 0 },
@@ -340,7 +304,6 @@ const DEFAULT_REVIEWS = {
     ]
 };
 
-/* Міста та відділення Нової пошти (приклад) */
 const CITIES = {
     'Київ':             ['№1', '№314', '№323', '№456', '№12', '№87'],
     'Львів':            ['№1', '№5', '№22', '№41'],
@@ -354,9 +317,7 @@ const CITIES = {
     'Чернігів':         ['№1', '№10']
 };
 
-
-/* Доставка */
 const DELIVERY = {
-    price: 80,            // вартість доставки Новою поштою
-    freeFrom: 2000        // безкоштовна доставка від цієї суми
+    price: 80,
+    freeFrom: 2000
 };

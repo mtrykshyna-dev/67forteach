@@ -1,7 +1,5 @@
-/* ---------- Слайдер "Наші переваги" ---------- */
 const slider = document.querySelector('.slider');
 
-/* Показує наступний слайд (або попередній, якщо step = -1) */
 function nextSlide(container, selector, step) {
     const slides = container.querySelectorAll(selector);
     if (slides.length === 0) {
@@ -20,7 +18,6 @@ function nextSlide(container, selector, step) {
     updateDots(container, nextIndex);
 }
 
-/* Крапки-індикатори під слайдером */
 function addDots(container, selector) {
     const slides = container.querySelectorAll(selector);
     const dots = document.createElement('div');
@@ -53,13 +50,11 @@ function updateDots(container, index) {
 if (slider) {
     addDots(slider, '.slide');
 
-    /* Клік по слайдеру — наступний слайд (як було) */
     slider.addEventListener('click', function (event) {
         event.preventDefault();
         nextSlide(slider, '.slide', 1);
     });
 
-    /* Автоматична прокрутка кожні 5 секунд, пауза при наведенні мишки */
     let paused = false;
     slider.addEventListener('mouseenter', function () { paused = true; });
     slider.addEventListener('mouseleave', function () { paused = false; });
@@ -68,7 +63,6 @@ if (slider) {
     }, 5000);
 }
 
-/* ---------- Рекламний банер на головній ---------- */
 const hero = document.querySelector('.section_1');
 
 if (hero && hero.querySelectorAll('.hero-slide').length > 1) {

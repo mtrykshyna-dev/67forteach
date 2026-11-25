@@ -1,11 +1,7 @@
-/* ==========================================================
-   product.js — сторінка товару (index_2.html?id=...)
-   ========================================================== */
 document.addEventListener('DOMContentLoaded', function () {
     const id = getParam('id') || 'flared-cross';
     const p = getProduct(id);
 
-    /* Якщо товару не існує */
     if (!p) {
         document.querySelector('.container').innerHTML =
             '<div class="empty-state page-empty">' +
@@ -19,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
     addRecent(p.id);
     document.title = p.name.toUpperCase() + ' - SIX SEVEN';
 
-    /* ---------- Заголовок, хлібні крихти, назад ---------- */
     const catUrl = 'index_3.html?cat=' + p.category;
     document.getElementById('productName').textContent = p.name.toUpperCase();
     document.getElementById('backLink').href = catUrl;
@@ -27,15 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
         '<a href="index.html">Головна</a> / <a href="index_3.html">Каталог</a> / ' +
         '<a href="' + catUrl + '">' + CATEGORIES[p.category] + '</a> / <span>' + escapeHtml(p.name) + '</span>';
 
-    /* ---------- Галерея ---------- */
-    /* Якщо в товару є власні фото (поле gallery) — показуємо їх, інакше спільні */
     const ownPhotos = p.gallery && p.gallery.length > 0;
     const images = ownPhotos ? p.gallery : IMG_GALLERY;
     let current = 0;
     const mainImage = document.getElementById('mainImage');
     const thumbs = document.getElementById('thumbs');
 
-    /* Мініатюри збоку: до 3 штук */
     const thumbIndexes = ownPhotos ? images.map(function (_, i) { return i; }).slice(0, 3) : [1, 2, 3];
     thumbs.innerHTML = thumbIndexes.map(function (i) {
         return '<img src="' + images[i] + '" alt="' + escapeHtml(p.name) + ', вид ' + (i + 1) + '" data-index="' + i + '" tabindex="0">';
@@ -60,13 +52,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('nextImg').addEventListener('click', function () { showImage(current + 1); });
     showImage(0);
 
-    /* Якщо фото лише одне — стрілки не потрібні (мініатюру лишаємо, щоб макет не змінювався) */
     if (images.length === 1) {
         document.getElementById('prevImg').hidden = true;
         document.getElementById('nextImg').hidden = true;
     }
 
-    /* ---------- Ціна, рейтинг, опис ---------- */
     document.getElementById('productPrice').textContent = 'Ціна: ' + formatPrice(p.price);
 
     function renderRatingLine() {
@@ -88,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (p.model) modelInfo.textContent = p.model;
     else modelInfo.textContent = p.sizes === SIZES_ONE ? 'Універсальний розмір' : 'Модель має розмір S/36, її зріст 170 см';
 
-    /* ---------- Обране ---------- */
     const favBtn = document.getElementById('favToggle');
     function renderFav() {
         const fav = isFavorite(p.id);
@@ -103,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     renderFav();
 
-    /* ---------- Розміри ---------- */
     let selectedSize = p.sizes.length === 1 ? p.sizes[0] : null;
     const sizeGrid = document.getElementById('sizeGrid');
     const sizeHint = document.getElementById('sizeHint');
@@ -140,13 +128,12 @@ document.addEventListener('DOMContentLoaded', function () {
         sizeHint.classList.add('error');
         sizeHint.innerHTML = 'Будь ласка, оберіть розмір ☝ · <button type="button" class="link-btn" data-open-advisor>Підібрати розмір</button>';
         sizeGrid.classList.remove('shake');
-        void sizeGrid.offsetWidth; // перезапуск анімації
+        void sizeGrid.offsetWidth;
         sizeGrid.classList.add('shake');
         sizeGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return false;
     }
 
-    /* ---------- Кнопки покупки ---------- */
     document.getElementById('addToCart').addEventListener('click', function () {
         if (!requireSize()) return;
         addToCart(p.id, selectedSize, 1);
@@ -160,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = 'form.html';
     });
 
-    /* ---------- Розмірна сітка та підбір розміру ---------- */
     function rangeText(r) { return r[0] + '–' + r[1] + ' см'; }
 
     function chartTableHtml(type) {
@@ -174,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return '<table class="size-table"><thead>' + head + '</thead><tbody>' + body + '</tbody></table>';
     }
 
-    /* Підбір: беремо найменший розмір, у який вміщуються всі виміри */
     function recommendSize(type, m) {
         const rows = SIZE_CHARTS[type].rows;
         if (type === 'shoes') {
@@ -253,7 +238,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target.id === 'sizeAdvisorBtn' || e.target.hasAttribute('data-open-advisor')) openSizeChart(true);
     });
 
-    /* ---------- Відгуки та коментарі ---------- */
     const reviewCards = document.getElementById('reviewCards');
 
     function renderReviews() {
@@ -261,7 +245,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const rated = ratedReviews(p.id);
         const votes = getVotes();
 
-        /* Розподіл оцінок (лише коментарі із зірками) */
         const counts = [0, 0, 0, 0, 0];
         rated.forEach(function (r) { counts[r.rating - 1]++; });
         document.getElementById('ratingBreakdown').innerHTML = [5, 4, 3, 2, 1].map(function (star) {
@@ -277,7 +260,6 @@ document.addEventListener('DOMContentLoaded', function () {
             ? 'Середня оцінка: ' + avg.toFixed(1) + ' з 5'
             : 'Оцінок поки немає';
 
-        /* Картки коментарів — та сама розмітка, що була в дизайні */
         reviewCards.innerHTML = reviews.length ? reviews.map(function (r) {
             const vote = votes[r.id];
             const likes = (r.likes || 0) + (vote === 'like' ? 1 : 0);
@@ -305,7 +287,6 @@ document.addEventListener('DOMContentLoaded', function () {
         renderReviews();
     });
 
-    /* Форма коментаря (оцінка зірками — необов'язкова) */
     const reviewForm = document.getElementById('reviewForm');
     const reviewError = document.getElementById('reviewError');
     const nameInput = document.getElementById('reviewName');
@@ -321,7 +302,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     starButtons.forEach(function (b) {
         b.addEventListener('click', function () {
-            /* повторне натискання на ту саму зірку знімає оцінку */
             stars = stars === Number(b.dataset.star) ? 0 : Number(b.dataset.star);
             paintStars(stars);
         });
@@ -353,7 +333,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     renderReviews();
 
-    /* ---------- Схожі товари ---------- */
     const similarGrid = document.getElementById('similarGrid');
     let similar = PRODUCTS.filter(function (x) { return x.category === p.category && x.id !== p.id; });
     if (similar.length < 4) {

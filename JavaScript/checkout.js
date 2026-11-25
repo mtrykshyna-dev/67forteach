@@ -1,7 +1,3 @@
-/* ==========================================================
-   checkout.js — оформлення замовлення (form.html)
-   Перевірка полів, підсумок, доставка, збереження замовлення.
-   ========================================================== */
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('checkoutForm');
     const summary = document.getElementById('orderSummary');
@@ -9,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const branchSelect = document.getElementById('field_branch');
     const user = getCurrentUser();
 
-    /* Порожній кошик — оформлювати нічого */
     if (getCart().length === 0) {
         form.hidden = true;
         summary.hidden = true;
@@ -17,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    /* ---------- Міста та відділення ---------- */
     Object.keys(CITIES).forEach(function (c) {
         const opt = document.createElement('option');
         opt.value = c; opt.textContent = c;
@@ -31,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     citySelect.addEventListener('change', fillBranches);
 
-    /* ---------- Дані з особистого кабінету ---------- */
     function prefill() {
         if (!user) return;
         form.elements.namedItem('name').value = user.name || '';
@@ -43,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     prefill();
 
-    /* ---------- Спосіб доставки ---------- */
     function deliveryType() {
         return form.querySelector('input[name="delivery"]:checked').value;
     }
@@ -62,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
         r.addEventListener('change', toggleBranchFields);
     });
 
-    /* ---------- Підсумок замовлення ---------- */
     function renderSummary() {
         const cart = getCart();
         document.getElementById('summaryItems').innerHTML = cart.map(function (i) {
@@ -80,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('summaryRows').innerHTML = rows;
     }
 
-    /* ---------- Маска телефону: +380 99 123 45 67 ---------- */
     function formatPhone(value) {
         let digits = value.replace(/\D/g, '');
         if (digits.startsWith('0')) digits = '38' + digits;
@@ -93,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.phone.addEventListener('input', function (e) {
         const digits = form.phone.value.replace(/\D/g, '');
-        /* Дозволяємо повністю стерти номер разом з +380 */
         if (digits.length === 0 || (e.inputType && e.inputType.indexOf('delete') === 0 && digits.length <= 3)) {
             form.phone.value = '';
             return;
@@ -101,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
         form.phone.value = formatPhone(form.phone.value);
     });
 
-    /* ---------- Перевірка полів ---------- */
     const validators = {
         name: function (v) {
             v = v.trim();
@@ -158,14 +146,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const el = form.elements.namedItem(name);
         el.addEventListener('blur', function () { validateField(el); });
         el.addEventListener('change', function () { validateField(el); });
-        /* Поки людина виправляє поле з помилкою — перевіряємо одразу */
         el.addEventListener('input', function () {
             if (el.closest('.field').classList.contains('error')) validateField(el);
         });
     });
 
-
-    /* ---------- Скинути ---------- */
     form.addEventListener('reset', function () {
         setTimeout(function () {
             form.querySelectorAll('.field').forEach(function (f) {
@@ -179,7 +164,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    /* ---------- Відправлення ---------- */
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -221,7 +205,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         saveOrder(order);
 
-        /* Зберігаємо дані у профілі, щоб наступного разу не вводити */
         if (user) {
             updateUser({
                 phone: user.phone || order.customer.phone,

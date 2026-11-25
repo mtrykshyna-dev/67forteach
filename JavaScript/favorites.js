@@ -1,6 +1,3 @@
-/* ==========================================================
-   favorites.js — сторінка "Обране"
-   ========================================================== */
 document.addEventListener('DOMContentLoaded', function () {
     const grid = document.getElementById('favGrid');
     const empty = document.getElementById('favEmpty');
@@ -16,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     bindCardActions(grid);
-    /* Коли прибрали сердечко — картка зникає зі сторінки */
     grid.addEventListener('favchange', render);
     render();
 });

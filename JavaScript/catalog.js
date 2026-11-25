@@ -1,9 +1,3 @@
-/* ==========================================================
-   catalog.js — універсальний каталог (index_3.html)
-   Адреса сторінки визначає, що показувати:
-     index_3.html?cat=jeans   — категорія
-     index_3.html?q=худі      — пошук
-   ========================================================== */
 document.addEventListener('DOMContentLoaded', function () {
     const grid = document.getElementById('catalogGrid');
     const info = document.getElementById('resultsInfo');
@@ -15,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const category = CATEGORIES[getParam('cat')] ? getParam('cat') : 'all';
     const query = (getParam('q') || '').trim();
 
-    /* Заголовок сторінки */
     if (query) {
         title.textContent = 'Пошук: «' + query + '»';
         document.title = 'Пошук: ' + query + ' — SIX SEVEN';
@@ -24,10 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.title = CATEGORIES[category] + ' — SIX SEVEN';
     }
 
-    /* Товари категорії або результати пошуку */
     const baseList = query ? searchProducts(query) : productsInCategory(category);
 
-    /* Розміри, які є у товарів цієї категорії */
     const sizes = [];
     baseList.forEach(function (p) {
         p.sizes.forEach(function (s) { if (!sizes.includes(s)) sizes.push(s); });

@@ -1,12 +1,4 @@
-/* ==========================================================
-   store.js — спільна логіка для всіх сторінок
-   Кошик, обране, переглянуті товари, відгуки, акаунти,
-   замовлення, пошук у шапці, сповіщення.
-   Усі дані зберігаються в браузері (localStorage).
-   Підключається ПІСЛЯ data.js.
-   ========================================================== */
 
-/* ---------- Робота зі сховищем ---------- */
 function loadData(key, fallback) {
     try {
         const raw = localStorage.getItem(key);
@@ -20,16 +12,13 @@ function saveData(key, value) {
     try {
         localStorage.setItem(key, JSON.stringify(value));
     } catch (e) {
-        /* наприклад, приватний режим браузера — просто нічого не зберігаємо */
     }
 }
 
-/* ---------- Допоміжні функції ---------- */
 function formatPrice(n) {
     return Math.round(n).toLocaleString('uk-UA').replace(/,/g, ' ') + ' ₴';
 }
 
-/* Захист від HTML у тексті, який вводить користувач (відгуки, імена) */
 function escapeHtml(text) {
     return String(text)
         .replace(/&/g, '&amp;')
@@ -51,7 +40,6 @@ function productUrl(p) {
     return 'index_2.html?id=' + encodeURIComponent(p.id);
 }
 
-/* Повертає товари з категорії (враховує "Новинки", "Одяг", "Низ") */
 function productsInCategory(cat) {
     if (!cat || cat === 'all') return PRODUCTS.slice();
     if (cat === 'new') return PRODUCTS.filter(function (p) { return p.isNew; });
@@ -61,7 +49,6 @@ function productsInCategory(cat) {
     return PRODUCTS.filter(function (p) { return p.category === cat; });
 }
 
-/* Яку розмірну сітку використовувати для товару */
 function chartTypeFor(p) {
     if (p.category === 'shoes') return 'shoes';
     if (p.sizes === SIZES_ONE) return null;
@@ -69,12 +56,10 @@ function chartTypeFor(p) {
     return 'clothes';
 }
 
-/* ---------- Кошик ---------- */
 function getCart() { return loadData('ss_cart', []); }
 function setCart(cart) {
     saveData('ss_cart', cart);
     updateBadges();
-    /* Повідомляємо сторінку, що кошик змінився (наприклад, кошик перемальовується) */
     document.dispatchEvent(new CustomEvent('cartchange'));
 }
 
@@ -115,7 +100,6 @@ function cartSubtotal() {
     }, 0);
 }
 
-/* ---------- Обране ---------- */
 function getFavorites() { return loadData('ss_fav', []); }
 
 function isFavorite(id) { return getFavorites().includes(id); }
@@ -135,7 +119,6 @@ function toggleFavorite(id) {
     return added;
 }
 
-/* ---------- Нещодавно переглянуті ---------- */
 function addRecent(id) {
     let recent = loadData('ss_recent', []).filter(function (r) { return r !== id; });
     recent.unshift(id);
@@ -146,7 +129,6 @@ function getRecent() {
     return loadData('ss_recent', []).map(getProduct).filter(Boolean);
 }
 
-/* ---------- Відгуки ---------- */
 function getReviews(id) {
     const own = loadData('ss_reviews', {})[id] || [];
     const base = DEFAULT_REVIEWS[id] || [];
@@ -162,7 +144,6 @@ function addReview(id, review) {
 
 function getVotes() { return loadData('ss_votes', {}); }
 
-/* Голос за відгук: 'like' / 'dislike'. Повторне натискання знімає голос. */
 function voteReview(reviewId, type) {
     const votes = getVotes();
     votes[reviewId] = votes[reviewId] === type ? null : type;
@@ -170,7 +151,6 @@ function voteReview(reviewId, type) {
     return votes[reviewId];
 }
 
-/* Середня оцінка — рахуємо лише ті коментарі, де поставили зірки */
 function ratedReviews(id) {
     return getReviews(id).filter(function (r) { return r.rating > 0; });
 }
@@ -188,9 +168,6 @@ function starsText(rating) {
     return '★'.repeat(full) + '☆'.repeat(5 - full);
 }
 
-/* ---------- Акаунти ----------
-   УВАГА: це навчальний приклад. Справжні сайти зберігають паролі
-   на сервері у захешованому вигляді, а не в браузері. */
 function simpleHash(text) {
     let hash = 5381;
     for (let i = 0; i < text.length; i++) {
@@ -240,7 +217,6 @@ function updateUser(fields) {
     saveData('ss_users', users);
 }
 
-/* ---------- Замовлення ---------- */
 function getOrders() { return loadData('ss_orders', []); }
 
 function saveOrder(order) {
@@ -254,8 +230,6 @@ function ordersForEmail(email) {
     return getOrders().filter(function (o) { return o.customer.email === email; });
 }
 
-/* ---------- Підсумок замовлення ----------
-   deliveryType: 'branch' (Нова пошта) або 'pickup' (самовивіз) */
 function calcTotals(deliveryType) {
     const subtotal = cartSubtotal();
     let delivery = 0;
@@ -269,7 +243,6 @@ function calcTotals(deliveryType) {
     };
 }
 
-/* ---------- Сповіщення (toast) ---------- */
 function showToast(message, linkText, linkHref) {
     let box = document.querySelector('.toast-box');
     if (!box) {
@@ -288,7 +261,6 @@ function showToast(message, linkText, linkHref) {
     setTimeout(function () { toast.remove(); }, 3700);
 }
 
-/* ---------- Модальне вікно ---------- */
 function openModal(innerHtml, extraClass) {
     closeModal();
     const overlay = document.createElement('div');
@@ -317,7 +289,6 @@ document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeModal();
 });
 
-/* ---------- Лічильники в шапці ---------- */
 function updateBadges() {
     document.querySelectorAll('[data-badge="cart"]').forEach(function (b) {
         const n = cartCount();
@@ -331,7 +302,6 @@ function updateBadges() {
     });
 }
 
-/* ---------- Картка товару (така ж розмітка, як у дизайні) ---------- */
 function renderProductCard(p) {
     const fav = isFavorite(p.id);
     return '' +
@@ -354,7 +324,6 @@ function renderProductCard(p) {
         '</article>';
 }
 
-/* Вибір розміру у спливаючому вікні (кнопка "Придбати" на картці) */
 function openSizePicker(id) {
     const p = getProduct(id);
     if (!p) return;
@@ -383,7 +352,6 @@ function openSizePicker(id) {
     });
 }
 
-/* Оживляє кнопки ♡ і "Придбати" у будь-якому контейнері з картками */
 function bindCardActions(container) {
     container.addEventListener('click', function (e) {
         const favBtn = e.target.closest('[data-fav]');
@@ -404,7 +372,6 @@ function bindCardActions(container) {
     });
 }
 
-/* ---------- Пошук у шапці з підказками ---------- */
 function searchProducts(query) {
     const q = query.trim().toLowerCase();
     if (!q) return [];
@@ -456,7 +423,6 @@ function initSearch() {
     });
 }
 
-/* ---------- Якщо фото товару не знайдено — показуємо стандартне ---------- */
 document.addEventListener('error', function (e) {
     const img = e.target;
     if (img.tagName === 'IMG' && !img.dataset.fallback) {
@@ -465,18 +431,15 @@ document.addEventListener('error', function (e) {
     }
 }, true);
 
-/* ---------- Запуск на кожній сторінці ---------- */
 document.addEventListener('DOMContentLoaded', function () {
     updateBadges();
     initSearch();
 
-    /* Іконка кабінету показує ім'я, якщо користувач увійшов */
     const user = getCurrentUser();
     document.querySelectorAll('.account-link').forEach(function (a) {
         a.title = user ? 'Кабінет: ' + user.name : 'Увійти / Зареєструватися';
         a.classList.toggle('logged-in', !!user);
     });
 
-    /* Оновлюємо лічильники, якщо дані змінилися в іншій вкладці */
     window.addEventListener('storage', updateBadges);
 });

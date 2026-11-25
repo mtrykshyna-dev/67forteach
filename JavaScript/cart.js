@@ -1,6 +1,3 @@
-/* ==========================================================
-   cart.js — сторінка кошика
-   ========================================================== */
 document.addEventListener('DOMContentLoaded', function () {
     const itemsBox = document.getElementById('cartItems');
     const layout = document.getElementById('cartLayout');
@@ -41,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('sumTotal').textContent = formatPrice(t.total);
     }
 
-    /* Кнопки +/−/видалити */
     itemsBox.addEventListener('click', function (e) {
         const cart = getCart();
         const minus = e.target.closest('[data-minus]');
@@ -52,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (remove) removeFromCart(Number(remove.dataset.remove));
     });
 
-    /* Будь-яка зміна кошика — перемальовуємо */
     document.addEventListener('cartchange', render);
 
     render();

@@ -1,6 +1,3 @@
-/* ==========================================================
-   thanks.js — сторінка "Дякуємо за замовлення"
-   ========================================================== */
 document.addEventListener('DOMContentLoaded', function () {
     const number = getParam('order');
     const order = getOrders().find(function (o) { return o.number === number; });

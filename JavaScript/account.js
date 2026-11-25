@@ -1,9 +1,4 @@
-/* ==========================================================
-   account.js — особистий кабінет: вхід, реєстрація, профіль,
-   історія замовлень
-   ========================================================== */
 
-/* Заповнює список міст і залежний від нього список відділень */
 function fillCitySelect(citySelect, branchSelect, city, branch) {
     Object.keys(CITIES).forEach(function (c) {
         const opt = document.createElement('option');
@@ -34,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
         err.hidden = !text;
     }
 
-    /* Вкладки "Вхід / Реєстрація" */
     document.querySelectorAll('.auth-tab').forEach(function (tab) {
         tab.addEventListener('click', function () {
             document.querySelectorAll('.auth-tab').forEach(function (t) { t.classList.toggle('active', t === tab); });
@@ -74,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
         render();
     });
 
-    /* Профіль */
     const profileForm = document.getElementById('profileForm');
     let citiesFilled = false;
 

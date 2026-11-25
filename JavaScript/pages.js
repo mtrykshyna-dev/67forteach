@@ -1,10 +1,5 @@
-/* ==========================================================
-   pages.js — інфо-сторінки: усі відгуки (about.html),
-   форма зворотного зв'язку (contacts.html)
-   ========================================================== */
 document.addEventListener('DOMContentLoaded', function () {
 
-    /* ---------- Усі відгуки на сторінці "Про нас" ---------- */
     const allReviews = document.getElementById('allReviews');
     if (allReviews) {
         const list = [];
@@ -26,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }).join('') : '<p class="muted">Відгуків поки немає.</p>';
     }
 
-    /* ---------- Форма "Напишіть нам" ---------- */
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
@@ -43,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
             err.hidden = !error;
             if (error) return;
 
-            /* Зберігаємо звернення (на справжньому сайті воно б пішло на сервер) */
             const messages = loadData('ss_messages', []);
             messages.push({ name: name, contact: contact, topic: contactForm.topic.value, message: message, date: new Date().toISOString() });
             saveData('ss_messages', messages);
@@ -52,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
             showToast('Дякуємо! Ми відповімо протягом робочого дня');
         });
 
-        /* Підставляємо дані користувача, якщо він увійшов */
         const user = getCurrentUser();
         if (user) {
             contactForm.elements.namedItem('name').value = user.name;
