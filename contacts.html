@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти — SIX SEVEN</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/shop.css">
+    <script src="JavaScript/data.js" defer></script>
+    <script src="JavaScript/store.js" defer></script>
+    <script src="JavaScript/pages.js" defer></script>
+</head>
+<body class="info-page">
+    <header>
+        <div class="header">
+            <div class="logo-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="SIX SEVEN">
+            </a>
+            </div>
+            <div class="menu">
+              <nav class="layout_menu">
+                <ul>
+                    <li>
+                        <div class="mini_logo">
+                            <a href="index.html">
+                                <img src="img/logo mini.png" class="logo_mini logos" alt="SIX SEVEN">
+                            </a>
+                        </div>
+                    </li>
+                    <li class="dropdown main">
+                        <div class="catalog">
+                            <a href="index_3.html">КАТАЛОГ</a>
+                        </div>
+                        <div class="dropdown_wrapper">
+                            <ul class="dropdown_menu">
+                                <li><a href="index_3.html?cat=clothes">Одяг</a></li>
+                                <li><a href="index_3.html?cat=new">Новинки</a></li>
+                                <li><a href="index_3.html?cat=outerwear">Верхній одяг</a></li>
+                                <li><a href="index_3.html?cat=sweatshirts">Світшоти</a></li>
+                                <li><a href="index_3.html?cat=hoodies">Худі</a></li>
+                                <li><a href="index_3.html?cat=tshirts">Футболки</a></li>
+                                <li><a href="index_3.html?cat=tops">Топи</a></li>
+                                <li><a href="index_3.html?cat=dresses">Сукні</a></li>
+                                <li><a href="index_3.html?cat=jeans">Джинси</a></li>
+                                <li><a href="index_3.html?cat=skirts">Спідниці</a></li>
+                                <li><a href="index_3.html?cat=shorts">Шорти</a></li>
+                                <li><a href="index_3.html?cat=accessories">Аксесуари</a></li>
+                                <li><a href="index_3.html?cat=shoes">Взуття</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="main">
+                        <form class="search-bar" role="search" action="index_3.html">
+                            <input type="search" name="q" placeholder="пошук..." aria-label="Пошук">
+                        </form>
+                    </li>
+                    <li class="main">
+                        <a href="index.html#category">КАТЕГОРІЇ</a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="favorites.html" class="icon-link" aria-label="Обране">
+                            <img src="img/favourite.png" alt="Обране" class="heart logos">
+                            <span class="badge" data-badge="fav" hidden></span>
+                        </a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="cart.html" class="icon-link" aria-label="Кошик">
+                            <img src="img/basket.png" alt="Кошик" class="basket logos">
+                            <span class="badge" data-badge="cart" hidden></span>
+                        </a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="account.html" class="icon-link account-link" aria-label="Особистий кабінет">
+                            <svg class="logos" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+                        </a>
+                    </li>
+                </ul>
+              </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="page container">
+        <div class="page-title">
+            <a href="index.html" class="back-arrow" aria-label="Назад">⬅</a>
+            <h1>Контакти</h1>
+        </div>
+
+        <div class="contacts-grid">
+            <section class="info-block">
+                <h2>Як з нами зв'язатися</h2>
+                <ul class="info-list contacts-list">
+                    <li><a href="tel:+380996041469">(099) 604 14 69</a></li>
+                    <li><a href="tel:+380966048879">(096) 604 88 79</a></li>
+                    <li><a href="mailto:advokat.dilaw@gmail.com">advokat.dilaw@gmail.com</a></li>
+                    <li>пн-пт — 10.00-18.00</li>
+                    <li>04073, м. Київ, пр. Степана Бандери, 21
+                        (<a href="https://www.google.com/maps/search/?api=1&query=%D0%BF%D1%80.%20%D0%A1%D1%82%D0%B5%D0%BF%D0%B0%D0%BD%D0%B0%20%D0%91%D0%B0%D0%BD%D0%B4%D0%B5%D1%80%D0%B8%2021%20%D0%9A%D0%B8%D1%97%D0%B2" target="_blank" rel="noopener">на карті</a>)</li>
+                </ul>
+            </section>
+
+            <form class="panel" id="contactForm" novalidate>
+                <h2>Напишіть нам</h2>
+                <label>Ім'я<input type="text" name="name" required></label>
+                <label>E-mail або телефон<input type="text" name="contact" required></label>
+                <label>Тема
+                    <select name="topic">
+                        <option>Питання про товар</option>
+                        <option>Статус замовлення</option>
+                        <option>Обмін або повернення</option>
+                        <option>Співпраця</option>
+                        <option>Інше</option>
+                    </select>
+                </label>
+                <label>Повідомлення<textarea name="message" rows="5" required></textarea></label>
+                <p class="form-error" hidden></p>
+                <button type="submit" class="btn-primary">Надіслати</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+                    <div class="footer-column">
+                        <h3>Про нас</h3>
+                        <p><a href="faq.html">Запитання-відповіді</a></p>
+                        <p><a href="index_3.html">Ціни</a></p>
+                        <p><a href="contacts.html">Адреса</a></p>
+                        <p><a href="about.html">Про магазин</a></p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Інша інформація</h3>
+                        <p><a href="delivery.html#payment">Оплата</a></p>
+                        <p><a href="delivery.html#how">Як оформити замовлення</a></p>
+                        <p><a href="about.html#reviews">Відгуки</a></p>
+                        <p><a href="delivery.html#return">Обмін і повернення</a></p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Графік роботи</h3>
+                        <p>пн-пт — 10.00-18.00</p>
+                        <p><strong>Адреса офіса</strong></p>
+                        <p>04073, м. Київ, пр. Степана Бандери, 21</p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Контактна інформація</h3>
+                        <p><a href="tel:+380996041469">(099) 604 14 69</a></p>
+                        <p><a href="tel:+380966048879">(096) 604 88 79</a></p>
+                        <p><a href="mailto:advokat.dilaw@gmail.com">advokat.dilaw@gmail.com</a></p>
+                    </div>
+                </footer>
+</body>
+</html>

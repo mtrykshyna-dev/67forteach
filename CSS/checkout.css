@@ -1,0 +1,133 @@
+/* ==========================================================
+   checkout.css — доповнення до style_1.css для оформлення замовлення
+   ========================================================== */
+
+[hidden] {
+    display: none !important;
+}
+
+/* Підсумок замовлення — у тому ж стилі, що й форма */
+.order-summary,
+.empty-cart {
+    background-color: #ffffffcc;
+    border: 5px #000000 solid;
+    max-width: 760px;
+    padding: 24px 32px;
+    border-radius: 16px;
+    margin: 0 auto 24px;
+}
+
+.empty-cart {
+    text-align: center;
+}
+
+.empty-cart a,
+.summary-head a {
+    color: #000;
+    font-weight: 700;
+}
+
+.summary-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+}
+
+.summary-head h2 {
+    margin: 0;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.summary-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.summary-items li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid #00000022;
+}
+
+.summary-items img {
+    width: 56px;
+    height: 68px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.summary-items span {
+    flex: 1;
+}
+
+.summary-items small {
+    color: #555;
+}
+
+.summary-rows {
+    margin-top: 12px;
+}
+
+.summary-rows > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 4px 0;
+}
+
+.summary-rows .discount {
+    color: #1a7f37;
+}
+
+.summary-rows .promo-warning {
+    color: #E42A11;
+    font-size: 15px;
+}
+
+.summary-rows .total {
+    font-weight: 700;
+    font-size: 22px;
+    border-top: 2px solid #000;
+    margin-top: 6px;
+    padding-top: 10px;
+}
+
+/* Помилки полів */
+.field.error > label {
+    color: #E42A11;
+}
+
+.control.error {
+    border-color: #E42A11;
+}
+
+.checkbox a {
+    color: #000;
+}
+
+.btn_submit:hover,
+.btn_reset:hover {
+    opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 32px;
+        margin-top: 90px;
+    }
+
+    .form,
+    .order-summary {
+        padding: 18px;
+    }
+
+    .cross a {
+        font-size: 60px;
+    }
+}

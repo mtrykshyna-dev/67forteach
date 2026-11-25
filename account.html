@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Особистий кабінет — SIX SEVEN</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/shop.css">
+    <script src="JavaScript/data.js" defer></script>
+    <script src="JavaScript/store.js" defer></script>
+    <script src="JavaScript/account.js" defer></script>
+</head>
+<body class="account-page">
+    <header>
+        <div class="header">
+            <div class="logo-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="SIX SEVEN">
+            </a>
+            </div>
+            <div class="menu">
+              <nav class="layout_menu">
+                <ul>
+                    <li>
+                        <div class="mini_logo">
+                            <a href="index.html">
+                                <img src="img/logo mini.png" class="logo_mini logos" alt="SIX SEVEN">
+                            </a>
+                        </div>
+                    </li>
+                    <li class="dropdown main">
+                        <div class="catalog">
+                            <a href="index_3.html">КАТАЛОГ</a>
+                        </div>
+                        <div class="dropdown_wrapper">
+                            <ul class="dropdown_menu">
+                                <li><a href="index_3.html?cat=clothes">Одяг</a></li>
+                                <li><a href="index_3.html?cat=new">Новинки</a></li>
+                                <li><a href="index_3.html?cat=outerwear">Верхній одяг</a></li>
+                                <li><a href="index_3.html?cat=sweatshirts">Світшоти</a></li>
+                                <li><a href="index_3.html?cat=hoodies">Худі</a></li>
+                                <li><a href="index_3.html?cat=tshirts">Футболки</a></li>
+                                <li><a href="index_3.html?cat=tops">Топи</a></li>
+                                <li><a href="index_3.html?cat=dresses">Сукні</a></li>
+                                <li><a href="index_3.html?cat=jeans">Джинси</a></li>
+                                <li><a href="index_3.html?cat=skirts">Спідниці</a></li>
+                                <li><a href="index_3.html?cat=shorts">Шорти</a></li>
+                                <li><a href="index_3.html?cat=accessories">Аксесуари</a></li>
+                                <li><a href="index_3.html?cat=shoes">Взуття</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="main">
+                        <form class="search-bar" role="search" action="index_3.html">
+                            <input type="search" name="q" placeholder="пошук..." aria-label="Пошук">
+                        </form>
+                    </li>
+                    <li class="main">
+                        <a href="index.html#category">КАТЕГОРІЇ</a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="favorites.html" class="icon-link" aria-label="Обране">
+                            <img src="img/favourite.png" alt="Обране" class="heart logos">
+                            <span class="badge" data-badge="fav" hidden></span>
+                        </a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="cart.html" class="icon-link" aria-label="Кошик">
+                            <img src="img/basket.png" alt="Кошик" class="basket logos">
+                            <span class="badge" data-badge="cart" hidden></span>
+                        </a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="account.html" class="icon-link account-link" aria-label="Особистий кабінет">
+                            <svg class="logos" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+                        </a>
+                    </li>
+                </ul>
+              </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="page container">
+        <div class="page-title">
+            <a href="index.html" class="back-arrow" aria-label="Назад">⬅</a>
+            <h1>Особистий кабінет</h1>
+        </div>
+
+        <!-- Для гостя: вхід і реєстрація -->
+        <section class="auth" id="authSection" hidden>
+            <div class="auth-tabs" role="tablist">
+                <button type="button" class="auth-tab active" data-tab="login" role="tab">Вхід</button>
+                <button type="button" class="auth-tab" data-tab="register" role="tab">Реєстрація</button>
+            </div>
+
+            <form class="panel auth-form" id="loginForm" novalidate>
+                <label>E-mail<input type="email" name="email" required autocomplete="email"></label>
+                <label>Пароль<input type="password" name="password" required autocomplete="current-password"></label>
+                <p class="form-error" hidden></p>
+                <button type="submit" class="btn-primary">Увійти</button>
+            </form>
+
+            <form class="panel auth-form" id="registerForm" novalidate hidden>
+                <label>Ім'я<input type="text" name="name" required autocomplete="given-name"></label>
+                <label>E-mail<input type="email" name="email" required autocomplete="email"></label>
+                <label>Пароль (мінімум 6 символів)<input type="password" name="password" minlength="6" required autocomplete="new-password"></label>
+                <label>Повторіть пароль<input type="password" name="password2" required autocomplete="new-password"></label>
+                <p class="form-error" hidden></p>
+                <button type="submit" class="btn-primary">Зареєструватися</button>
+            </form>
+
+        </section>
+
+        <!-- Для користувача, який увійшов -->
+        <section class="profile" id="profileSection" hidden>
+            <p class="page-lead">Вітаємо, <b id="userName"></b>! <button type="button" class="link-btn" id="logoutBtn">Вийти</button></p>
+
+            <div class="profile-grid">
+                <form class="panel" id="profileForm">
+                    <h2>Мої дані</h2>
+                    <label>Ім'я та прізвище<input type="text" name="name" required></label>
+                    <label>E-mail<input type="email" name="email" disabled></label>
+                    <label>Телефон<input type="tel" name="phone" placeholder="+380 99 123 45 67"></label>
+                    <label>Місто<select name="city" id="profileCity"><option value="">Оберіть місто</option></select></label>
+                    <label>Відділення Нової пошти<select name="branch" id="profileBranch"><option value="">Спочатку оберіть місто</option></select></label>
+                    <button type="submit" class="btn-primary">Зберегти</button>
+                </form>
+
+                <div class="panel">
+                    <h2>Мої замовлення</h2>
+                    <div id="ordersList"></div>
+                </div>
+            </div>
+
+            <div class="profile-links">
+                <a href="favorites.html" class="btn-outline">♡ Обране (<span id="favCount">0</span>)</a>
+                <a href="cart.html" class="btn-outline">🛒 Кошик (<span id="cartCount">0</span>)</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+                    <div class="footer-column">
+                        <h3>Про нас</h3>
+                        <p><a href="faq.html">Запитання-відповіді</a></p>
+                        <p><a href="index_3.html">Ціни</a></p>
+                        <p><a href="contacts.html">Адреса</a></p>
+                        <p><a href="about.html">Про магазин</a></p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Інша інформація</h3>
+                        <p><a href="delivery.html#payment">Оплата</a></p>
+                        <p><a href="delivery.html#how">Як оформити замовлення</a></p>
+                        <p><a href="about.html#reviews">Відгуки</a></p>
+                        <p><a href="delivery.html#return">Обмін і повернення</a></p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Графік роботи</h3>
+                        <p>пн-пт — 10.00-18.00</p>
+                        <p><strong>Адреса офіса</strong></p>
+                        <p>04073, м. Київ, пр. Степана Бандери, 21</p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Контактна інформація</h3>
+                        <p><a href="tel:+380996041469">(099) 604 14 69</a></p>
+                        <p><a href="tel:+380966048879">(096) 604 88 79</a></p>
+                        <p><a href="mailto:advokat.dilaw@gmail.com">advokat.dilaw@gmail.com</a></p>
+                    </div>
+                </footer>
+</body>
+</html>

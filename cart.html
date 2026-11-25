@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик — SIX SEVEN</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/shop.css">
+    <script src="JavaScript/data.js" defer></script>
+    <script src="JavaScript/store.js" defer></script>
+    <script src="JavaScript/cart.js" defer></script>
+</head>
+<body class="cart-page">
+    <header>
+        <div class="header">
+            <div class="logo-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="SIX SEVEN">
+            </a>
+            </div>
+            <div class="menu">
+              <nav class="layout_menu">
+                <ul>
+                    <li>
+                        <div class="mini_logo">
+                            <a href="index.html">
+                                <img src="img/logo mini.png" class="logo_mini logos" alt="SIX SEVEN">
+                            </a>
+                        </div>
+                    </li>
+                    <li class="dropdown main">
+                        <div class="catalog">
+                            <a href="index_3.html">КАТАЛОГ</a>
+                        </div>
+                        <div class="dropdown_wrapper">
+                            <ul class="dropdown_menu">
+                                <li><a href="index_3.html?cat=clothes">Одяг</a></li>
+                                <li><a href="index_3.html?cat=new">Новинки</a></li>
+                                <li><a href="index_3.html?cat=outerwear">Верхній одяг</a></li>
+                                <li><a href="index_3.html?cat=sweatshirts">Світшоти</a></li>
+                                <li><a href="index_3.html?cat=hoodies">Худі</a></li>
+                                <li><a href="index_3.html?cat=tshirts">Футболки</a></li>
+                                <li><a href="index_3.html?cat=tops">Топи</a></li>
+                                <li><a href="index_3.html?cat=dresses">Сукні</a></li>
+                                <li><a href="index_3.html?cat=jeans">Джинси</a></li>
+                                <li><a href="index_3.html?cat=skirts">Спідниці</a></li>
+                                <li><a href="index_3.html?cat=shorts">Шорти</a></li>
+                                <li><a href="index_3.html?cat=accessories">Аксесуари</a></li>
+                                <li><a href="index_3.html?cat=shoes">Взуття</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="main">
+                        <form class="search-bar" role="search" action="index_3.html">
+                            <input type="search" name="q" placeholder="пошук..." aria-label="Пошук">
+                        </form>
+                    </li>
+                    <li class="main">
+                        <a href="index.html#category">КАТЕГОРІЇ</a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="favorites.html" class="icon-link" aria-label="Обране">
+                            <img src="img/favourite.png" alt="Обране" class="heart logos">
+                            <span class="badge" data-badge="fav" hidden></span>
+                        </a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="cart.html" class="icon-link" aria-label="Кошик">
+                            <img src="img/basket.png" alt="Кошик" class="basket logos">
+                            <span class="badge" data-badge="cart" hidden></span>
+                        </a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="account.html" class="icon-link account-link" aria-label="Особистий кабінет">
+                            <svg class="logos" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+                        </a>
+                    </li>
+                </ul>
+              </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="page container">
+        <div class="page-title">
+            <a href="index_3.html" class="back-arrow" aria-label="Назад">⬅</a>
+            <h1>Кошик</h1>
+        </div>
+
+        <div class="cart-layout" id="cartLayout">
+            <div class="cart-items" id="cartItems">
+                <!-- Товари в кошику малює cart.js -->
+            </div>
+
+            <aside class="summary" id="cartSummary">
+                <h2>Ваше замовлення</h2>
+                <div class="sum-row"><span>Товари (<span id="sumCount">0</span> шт.)</span><span id="sumSubtotal">0 ₴</span></div>
+                <div class="sum-row"><span>Доставка</span><span id="sumDelivery"></span></div>
+                <div class="sum-row sum-total"><span>До сплати</span><span id="sumTotal">0 ₴</span></div>
+                <a href="form.html" class="btn-primary">Оформити замовлення</a>
+                <a href="index_3.html" class="btn-outline">Продовжити покупки</a>
+            </aside>
+        </div>
+
+        <div class="empty-state" id="cartEmpty" hidden>
+            <p>Ваш кошик порожній</p>
+            <p class="muted">Загляньте в каталог — там багато цікавого</p>
+            <a href="index_3.html" class="btn-outline">Перейти до каталогу</a>
+        </div>
+    </main>
+
+    <footer>
+                    <div class="footer-column">
+                        <h3>Про нас</h3>
+                        <p><a href="faq.html">Запитання-відповіді</a></p>
+                        <p><a href="index_3.html">Ціни</a></p>
+                        <p><a href="contacts.html">Адреса</a></p>
+                        <p><a href="about.html">Про магазин</a></p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Інша інформація</h3>
+                        <p><a href="delivery.html#payment">Оплата</a></p>
+                        <p><a href="delivery.html#how">Як оформити замовлення</a></p>
+                        <p><a href="about.html#reviews">Відгуки</a></p>
+                        <p><a href="delivery.html#return">Обмін і повернення</a></p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Графік роботи</h3>
+                        <p>пн-пт — 10.00-18.00</p>
+                        <p><strong>Адреса офіса</strong></p>
+                        <p>04073, м. Київ, пр. Степана Бандери, 21</p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Контактна інформація</h3>
+                        <p><a href="tel:+380996041469">(099) 604 14 69</a></p>
+                        <p><a href="tel:+380966048879">(096) 604 88 79</a></p>
+                        <p><a href="mailto:advokat.dilaw@gmail.com">advokat.dilaw@gmail.com</a></p>
+                    </div>
+                </footer>
+</body>
+</html>

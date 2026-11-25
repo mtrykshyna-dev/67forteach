@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style_1.css">
+    <link rel="stylesheet" href="CSS/checkout.css">
+    <title>Оформлення замовлення — SIX SEVEN</title>
+    <script src="JavaScript/data.js" defer></script>
+    <script src="JavaScript/store.js" defer></script>
+    <script src="JavaScript/checkout.js" defer></script>
+</head>
+<body>
+    <div class="loyout_container">
+        <h1><a href="index.html">Оформлення замовлення</a></h1>
+        <div class="cross">
+            <a href="cart.html" aria-label="Повернутися до кошика">⛒</a>
+        </div>
+
+        <!-- Підсумок замовлення (заповнює checkout.js) -->
+        <section class="order-summary" id="orderSummary">
+            <div class="summary-head">
+                <h2>Ваше замовлення</h2>
+                <a href="cart.html">Змінити</a>
+            </div>
+            <ul class="summary-items" id="summaryItems"></ul>
+            <div class="summary-rows" id="summaryRows"></div>
+        </section>
+
+        <div class="empty-cart" id="emptyCart" hidden>
+            <p>Ваш кошик порожній — немає що оформлювати.</p>
+            <a href="index_3.html">Перейти до каталогу →</a>
+        </div>
+
+        <form class="form" id="checkoutForm" novalidate>
+            <div class="field required">
+                <label for="field_name">ВАШ ПІБ</label>
+                <input type="text" class="control icon_name" id="field_name" name="name" placeholder="Введіть ім'я в форматі Іван Франко" autocomplete="name" required>
+                <p class="error_massage" hidden></p>
+            </div>
+              <div class="field required">
+                <label for="field_email">ВАШ E-MAIL</label>
+                <input type="email" class="control icon_email" id="field_email" name="email" placeholder="i.franko@gmail.com" autocomplete="email" required>
+                <p class="error_massage" hidden></p>
+            </div>
+            <div class="field required">
+                <label for="field_phone">ВАШ ТЕЛЕФОН</label>
+                <input type="tel" class="control icon_tel" id="field_phone" name="phone" placeholder="+380 99 123 45 67" autocomplete="tel" required>
+                <p class="error_massage" hidden></p>
+            </div>
+            <div class="field">
+                <label>Доставка</label>
+                <label class="radio">
+                    <input type="radio" name="delivery" value="branch" checked> Відділення Нової пошти
+                </label>
+                <label class="radio">
+                    <input type="radio" name="delivery" value="pickup"> Самовивіз з офісу (Київ, пр. Степана Бандери, 21)
+                </label>
+            </div>
+            <div class="field">
+                <label>Оплата</label>
+                <label class="radio">
+                    <input type="radio" name="cost" value="card" checked> Картка
+                </label>
+
+                <label class="radio">
+                    <input type="radio" name="cost" value="cash" > При отриманні в відділенні
+                </label>
+            </div>
+            <div class="field required branch-field">
+                <label for="field_city">Ваше місто</label>
+                <select class="control" id="field_city" name="city">
+                    <option value="">Введіть зі списку</option>
+                </select>
+                <p class="error_massage" hidden></p>
+            </div>
+            <div class="field required branch-field">
+                <label for="field_branch">Ваше відділення</label>
+                <select class="control" id="field_branch" name="branch">
+                    <option value="">Спочатку оберіть місто</option>
+                </select>
+                <p class="error_massage" hidden></p>
+            </div>
+            <div class="field">
+                <label for="comment">Коментар до замовлення</label>
+                <textarea id="comment" name="comment" class="control" maxlength="500" placeholder="Наприклад: зателефонуйте перед відправкою"></textarea>
+            </div>
+            <div class="field no_label">
+                <label class="checkbox">
+                    <input type="checkbox" id="agree" name="agree">
+                    Погоджуюсь з <a href="delivery.html" target="_blank">умовами платформи</a>
+                </label>
+                <p class="error_massage" hidden></p>
+            </div>
+            <footer class="form_action">
+                <button type="reset" class="btn_reset">Скинути</button>
+                <button type="submit" class="btn_submit">Відправити</button>
+            </footer>
+        </form>
+    </div>
+</body>
+</html>

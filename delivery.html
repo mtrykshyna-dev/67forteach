@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доставка й оплата — SIX SEVEN</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/shop.css">
+    <script src="JavaScript/data.js" defer></script>
+    <script src="JavaScript/store.js" defer></script>
+</head>
+<body class="info-page">
+    <header>
+        <div class="header">
+            <div class="logo-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="SIX SEVEN">
+            </a>
+            </div>
+            <div class="menu">
+              <nav class="layout_menu">
+                <ul>
+                    <li>
+                        <div class="mini_logo">
+                            <a href="index.html">
+                                <img src="img/logo mini.png" class="logo_mini logos" alt="SIX SEVEN">
+                            </a>
+                        </div>
+                    </li>
+                    <li class="dropdown main">
+                        <div class="catalog">
+                            <a href="index_3.html">КАТАЛОГ</a>
+                        </div>
+                        <div class="dropdown_wrapper">
+                            <ul class="dropdown_menu">
+                                <li><a href="index_3.html?cat=clothes">Одяг</a></li>
+                                <li><a href="index_3.html?cat=new">Новинки</a></li>
+                                <li><a href="index_3.html?cat=outerwear">Верхній одяг</a></li>
+                                <li><a href="index_3.html?cat=sweatshirts">Світшоти</a></li>
+                                <li><a href="index_3.html?cat=hoodies">Худі</a></li>
+                                <li><a href="index_3.html?cat=tshirts">Футболки</a></li>
+                                <li><a href="index_3.html?cat=tops">Топи</a></li>
+                                <li><a href="index_3.html?cat=dresses">Сукні</a></li>
+                                <li><a href="index_3.html?cat=jeans">Джинси</a></li>
+                                <li><a href="index_3.html?cat=skirts">Спідниці</a></li>
+                                <li><a href="index_3.html?cat=shorts">Шорти</a></li>
+                                <li><a href="index_3.html?cat=accessories">Аксесуари</a></li>
+                                <li><a href="index_3.html?cat=shoes">Взуття</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="main">
+                        <form class="search-bar" role="search" action="index_3.html">
+                            <input type="search" name="q" placeholder="пошук..." aria-label="Пошук">
+                        </form>
+                    </li>
+                    <li class="main">
+                        <a href="index.html#category">КАТЕГОРІЇ</a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="favorites.html" class="icon-link" aria-label="Обране">
+                            <img src="img/favourite.png" alt="Обране" class="heart logos">
+                            <span class="badge" data-badge="fav" hidden></span>
+                        </a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="cart.html" class="icon-link" aria-label="Кошик">
+                            <img src="img/basket.png" alt="Кошик" class="basket logos">
+                            <span class="badge" data-badge="cart" hidden></span>
+                        </a>
+                    </li>
+                    <li class="main icon-item">
+                        <a href="account.html" class="icon-link account-link" aria-label="Особистий кабінет">
+                            <svg class="logos" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+                        </a>
+                    </li>
+                </ul>
+              </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="page container">
+        <div class="page-title">
+            <a href="index.html" class="back-arrow" aria-label="Назад">⬅</a>
+            <h1>Доставка й оплата</h1>
+        </div>
+
+        <section class="info-block" id="how">
+            <h2>Як оформити замовлення</h2>
+            <ol class="steps">
+                <li><b>Оберіть товар</b> у <a href="index_3.html">каталозі</a> та відкрийте його сторінку.</li>
+                <li><b>Виберіть розмір.</b> Якщо сумніваєтеся — натисніть «Підібрати розмір» і введіть свої мірки.</li>
+                <li><b>Додайте в кошик</b> або натисніть «Купити в один клік».</li>
+                <li>У <a href="cart.html">кошику</a> перевірте товари, розміри та кількість.</li>
+                <li>Заповніть <b>форму замовлення</b>: ПІБ, телефон, e-mail, місто й відділення.</li>
+                <li>Отримайте <b>номер замовлення</b> — менеджер зателефонує для підтвердження.</li>
+            </ol>
+        </section>
+
+        <section class="info-block" id="delivery">
+            <h2>Доставка</h2>
+            <table class="info-table">
+                <thead><tr><th>Спосіб</th><th>Термін</th><th>Вартість</th></tr></thead>
+                <tbody>
+                    <tr><td>Відділення Нової пошти</td><td>1–3 дні</td><td>80 ₴, безкоштовно від 2000 ₴</td></tr>
+                    <tr><td>Самовивіз з офісу (Київ, пр. Степана Бандери, 21)</td><td>у день замовлення</td><td>безкоштовно</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="info-block" id="payment">
+            <h2>Оплата</h2>
+            <ul class="info-list">
+                <li><b>Карткою</b> — після підтвердження замовлення менеджер надішле посилання на безпечну оплату.</li>
+                <li><b>При отриманні</b> — оплата у відділенні Нової пошти (накладений платіж) або в офісі під час самовивозу.</li>
+            </ul>
+        </section>
+
+
+        <section class="info-block" id="return">
+            <h2>Обмін і повернення</h2>
+            <p>Ви можете обміняти або повернути товар протягом <b>14 днів</b> з моменту отримання, якщо він не був у
+               використанні, збережено бірки та товарний вигляд. Зателефонуйте нам або напишіть на сторінці
+               <a href="contacts.html">«Контакти»</a> — ми підкажемо, як надіслати посилку.</p>
+        </section>
+    </main>
+
+    <footer>
+                    <div class="footer-column">
+                        <h3>Про нас</h3>
+                        <p><a href="faq.html">Запитання-відповіді</a></p>
+                        <p><a href="index_3.html">Ціни</a></p>
+                        <p><a href="contacts.html">Адреса</a></p>
+                        <p><a href="about.html">Про магазин</a></p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Інша інформація</h3>
+                        <p><a href="delivery.html#payment">Оплата</a></p>
+                        <p><a href="delivery.html#how">Як оформити замовлення</a></p>
+                        <p><a href="about.html#reviews">Відгуки</a></p>
+                        <p><a href="delivery.html#return">Обмін і повернення</a></p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Графік роботи</h3>
+                        <p>пн-пт — 10.00-18.00</p>
+                        <p><strong>Адреса офіса</strong></p>
+                        <p>04073, м. Київ, пр. Степана Бандери, 21</p>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Контактна інформація</h3>
+                        <p><a href="tel:+380996041469">(099) 604 14 69</a></p>
+                        <p><a href="tel:+380966048879">(096) 604 88 79</a></p>
+                        <p><a href="mailto:advokat.dilaw@gmail.com">advokat.dilaw@gmail.com</a></p>
+                    </div>
+                </footer>
+</body>
+</html>
